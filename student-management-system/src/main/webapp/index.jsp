@@ -47,9 +47,9 @@
 <div class="container">
 	<h1>Welcome to the Student Management System</h1>
 	<div class="buttons">
-		<a class="blue-btn" href="pages/add_student.jsp">Add Student</a>
-		<a class="green-btn" href="pages/list_students.jsp">List of Students</a>
-		<a class="yellow-btn" href="pages/update_student.jsp">Update Student</a>
+		<a class="blue-btn" href="pages/add-student.jsp">Add Student</a>
+		<a class="green-btn" href="pages/list-students.jsp">List of Students</a>
+		<a class="yellow-btn" href="pages/update-student.jsp">Update Student</a>
 	</div>
 </div>
 </body>

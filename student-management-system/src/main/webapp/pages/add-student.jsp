@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,10 +58,15 @@
 <div class="container">
 	<h2>Add Student</h2>
 	<div class="form">
+		<c:if test="${not empty successMessage}">
+			<div style="color: green; margin-bottom: 10px;">${successMessage}</div>
+		</c:if>
 		<c:if test="${not empty errorMessage}">
-			<div>${errorMessage}</div>
+			<div style="color: red; margin-bottom: 10px;">${errorMessage}</div>
 		</c:if>
 		<form action="../student/StudentServlet" method="post">
+			<input type="hidden" name="action" value="add">
+			
 	        <label for="name">Name:</label>
 	        <input type="text" id="name" name="name" required><br><br>
 	
@@ -70,7 +76,7 @@
 	        <label for="mobile">Mobile:</label>
 	        <input type="tel" id="mobile" name="mobile" required><br><br>
 	
-	        <label for="mobile">Address:</label>
+	        <label for="address">Address:</label>
 	        <input type="text" id="address" name="address" required><br><br>
 	
 	        <input class="blue-btn" type="submit" value="Submit">

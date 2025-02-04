@@ -34,12 +34,17 @@ public class StudentServlet extends HttpServlet {
 
 			try {
 				studentDAO.addStudent(student);
-				response.sendRedirect("list_students.jsp");
+				String successMessage = "student record added successfully!";
+				request.setAttribute("successMessage", successMessage);
+				// request.getRequestDispatcher("../pages/add_student.jsp").forward(request,
+				// response);
+				response.sendRedirect("../pages/list-students.jsp");
 
 			} catch (SQLException e) {
 				e.printStackTrace();
-				request.setAttribute("errorMessage", "error adding student: " + e.getMessage());
-				request.getRequestDispatcher("add_student.jsp").forward(request, response);
+				String errorMessage = "error adding student: " + e.getMessage();
+				request.setAttribute("errorMessage", errorMessage);
+				request.getRequestDispatcher("../pages/add-student.jsp").forward(request, response);
 			}
 		}
 	}
