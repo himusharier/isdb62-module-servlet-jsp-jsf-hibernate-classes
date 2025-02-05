@@ -49,8 +49,11 @@ public class StudentDAO {
 
 				students.add(new Student(id, name, email, mobile, address));
 			}
-			return students;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new SQLException("error while fetching students records.", e);
 		}
+		return students;
 	}
 
 }

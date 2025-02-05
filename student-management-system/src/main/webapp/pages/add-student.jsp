@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -28,6 +27,7 @@
 	.form > form > label {
 		display: inline-block;
 		width: 60px;
+		vertical-align: top;
 	}
 	.form > form > .blue-btn {
 		background-color: #1A5ED7;
@@ -51,6 +51,10 @@
 	.form > form > .yellow-btn:hover {
 		text-decoration: underline;
 	}
+	.form > form > textarea {
+		width: 170px;
+	}
+}
 		
 </style>
 </head>
@@ -77,8 +81,10 @@
 	        <input type="tel" id="mobile" name="mobile" required><br><br>
 	
 	        <label for="address">Address:</label>
-	        <input type="text" id="address" name="address" required><br><br>
+	        <!-- <input type="text" id="address" name="address" required><br><br> -->
+	        <textarea rows="2"></textarea>
 	
+			<br><br>
 	        <input class="blue-btn" type="submit" value="Submit">
 	        <br><br>
 			<a class="yellow-btn" href="/student-management-system">⟵ Back to Home</a>
