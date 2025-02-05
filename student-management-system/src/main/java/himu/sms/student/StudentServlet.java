@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/student/StudentServlet")
+@WebServlet("/pages/StudentServlet")
 public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StudentDAO studentDAO;
@@ -38,13 +38,13 @@ public class StudentServlet extends HttpServlet {
 				request.setAttribute("successMessage", successMessage);
 				// request.getRequestDispatcher("../pages/add_student.jsp").forward(request,
 				// response);
-				response.sendRedirect("../pages/list-students.jsp");
+				response.sendRedirect("list-students.jsp");
 
 			} catch (SQLException e) {
 				e.printStackTrace();
 				String errorMessage = "error adding student: " + e.getMessage();
 				request.setAttribute("errorMessage", errorMessage);
-				request.getRequestDispatcher("../pages/add-student.jsp").forward(request, response);
+				request.getRequestDispatcher("add-student.jsp").forward(request, response);
 			}
 		}
 	}

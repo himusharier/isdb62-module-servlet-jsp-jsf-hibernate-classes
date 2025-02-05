@@ -68,7 +68,7 @@
 		<c:if test="${not empty errorMessage}">
 			<div style="color: red; margin-bottom: 10px;">${errorMessage}</div>
 		</c:if>
-		<form action="../student/StudentServlet" method="post">
+		<form action="StudentServlet" method="post">
 			<input type="hidden" name="action" value="add">
 			
 	        <label for="name">Name:</label>
@@ -82,7 +82,7 @@
 	
 	        <label for="address">Address:</label>
 	        <!-- <input type="text" id="address" name="address" required><br><br> -->
-	        <textarea rows="2"></textarea>
+	        <textarea rows="2" id="address" name="address"></textarea>
 	
 			<br><br>
 	        <input class="blue-btn" type="submit" value="Submit">
