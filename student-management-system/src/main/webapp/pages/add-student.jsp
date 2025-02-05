@@ -86,7 +86,7 @@
 	
 			<br><br>
 	        <input class="blue-btn" type="submit" value="Submit">
-	        <br><br>
+	        <br><br><br>
 			<a class="yellow-btn" href="/student-management-system">⟵ Back to Home</a>
     	</form>
 	</div>

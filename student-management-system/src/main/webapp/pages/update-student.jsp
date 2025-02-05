@@ -58,6 +58,9 @@
 		cursor: pointer;
 		margin-top: 10px;
 	}
+	.form > form > .green-btn:hover {
+		text-decoration: underline;
+	}
 	.form > form > .yellow-btn:hover {
 		text-decoration: underline;
 	}
@@ -78,8 +81,8 @@
 		<c:if test="${not empty errorMessage}">
 			<div style="color: red; margin-bottom: 10px;">${errorMessage}</div>
 		</c:if>
-		<form action="../student/StudentServlet" method="post">
-			<input type="hidden" name="action" value="add">
+		<form action="StudentServlet" method="post">
+			<input type="hidden" name="action" value="update">
 			
 	        <label for="name">Name:</label>
 	        <input type="text" id="name" name="name" required><br><br>
@@ -96,7 +99,7 @@
 	
 			<br><br>
 	        <input class="blue-btn" type="submit" value="Update">
-	        <br><br>
+	        <br><br><br>
 			<a class="green-btn" href="list-students.jsp">⟵ Back to List</a>
 	        <br><br>
 			<a class="yellow-btn" href="/student-management-system">⟵ Back to Home</a>

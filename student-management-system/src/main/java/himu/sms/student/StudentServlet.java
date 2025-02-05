@@ -47,5 +47,26 @@ public class StudentServlet extends HttpServlet {
 				request.getRequestDispatcher("add-student.jsp").forward(request, response);
 			}
 		}
+
+		if ("delete".equals(action)) {
+			int id = Integer.parseInt(request.getParameter("id"));
+
+			try {
+				studentDAO.deleteStudent(id);
+				String successMessage = "student record deleted successfully!";
+				request.setAttribute("successMessage", successMessage);
+				// request.getRequestDispatcher("../pages/add_student.jsp").forward(request,
+				// response);
+				response.sendRedirect("list-students.jsp");
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+				String errorMessage = "error deleting student: " + e.getMessage();
+				request.setAttribute("errorMessage", errorMessage);
+				// request.getRequestDispatcher("add-student.jsp").forward(request, response);
+				response.sendRedirect("list-students.jsp");
+			}
+		}
+
 	}
 }

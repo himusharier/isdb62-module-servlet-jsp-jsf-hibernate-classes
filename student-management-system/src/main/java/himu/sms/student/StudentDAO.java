@@ -12,10 +12,9 @@ import himu.sms.database.DBConnection;
 public class StudentDAO {
 	private static final String INSERT_STUDENT_SQL = "INSERT INTO students_jsp (name, email, mobile, address) VALUES (?, ?, ?, ?)";
 	private static final String SELECT_ALL_STUDENTS_SQL = "SELECT * FROM students_jsp";
-	// private static final String SELECT_STUDENT_BY_ID_SQL = "SELECT * FROM
-	// students_jsp WHERE id = ?";
-	// private static final String UPDATE_STUDENT_SQL = "UPDATE students_jsp SET
-	// name = ?, email = ?, mobile = ?, address = ? WHERE id = ?";
+	private static final String SELECT_STUDENT_BY_ID_SQL = "SELECT * FROM students_jsp WHERE id = ?";
+	private static final String UPDATE_STUDENT_SQL = "UPDATE students_jsp SET name = ?, email = ?, mobile = ?, address = ? WHERE id = ?";
+	private static final String DELETE_STUDENT_SQL = "DELETE FROM students_jsp WHERE id = ?";
 
 	public void addStudent(Student student) throws SQLException {
 		try (Connection connection = DBConnection.getConnection();
@@ -54,6 +53,30 @@ public class StudentDAO {
 			throw new SQLException("error while fetching students records.", e);
 		}
 		return students;
+	}
+
+	public void deleteStudent(int id) throws SQLException {
+		try (Connection connection = DBConnection.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(DELETE_STUDENT_SQL)) {
+			preparedStatement.setInt(1, id);
+			preparedStatement.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new SQLException("error while fetching students records.", e);
+		}
+	}
+
+	public void getStudentById(int id) throws SQLException {
+		try (Connection connection = DBConnection.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_STUDENT_BY_ID_SQL)) {
+			preparedStatement.setInt(1, id);
+			preparedStatement.execute();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new SQLException("error while fetching students records.", e);
+		}
 	}
 
 }
