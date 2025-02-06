@@ -68,5 +68,24 @@ public class StudentServlet extends HttpServlet {
 			}
 		}
 
+		if ("update".equals(action)) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			String mobile = request.getParameter("mobile");
+			String address = request.getParameter("address");
+
+			Student student = new Student(id, name, email, mobile, address);
+
+			try {
+				studentDAO.updateStudent(student);
+				response.sendRedirect("list-students.jsp");
+			} catch (Exception e) {
+				e.printStackTrace();
+				request.setAttribute("errorMessage", "Error updating student: " + e.getMessage());
+				request.getRequestDispatcher("update-student.jsp?id=" + id).forward(request, response);
+			}
+		}
+
 	}
 }

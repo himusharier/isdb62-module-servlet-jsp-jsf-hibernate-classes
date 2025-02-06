@@ -67,15 +67,40 @@ public class StudentDAO {
 		}
 	}
 
-	public void getStudentById(int id) throws SQLException {
+	public Student getStudentById(int id) throws SQLException {
+		Student student = null;
+
 		try (Connection connection = DBConnection.getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_STUDENT_BY_ID_SQL)) {
 			preparedStatement.setInt(1, id);
-			preparedStatement.execute();
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			if (resultSet.next()) {
+				String name = resultSet.getString("name");
+				String email = resultSet.getString("email");
+				String mobile = resultSet.getString("mobile");
+				String address = resultSet.getString("address");
+				student = new Student(id, name, email, mobile, address);
+			}
+		}
+		return student;
+
+	}
+
+	public void updateStudent(Student student) throws SQLException {
+		try (Connection connection = DBConnection.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STUDENT_SQL)) {
+
+			preparedStatement.setString(1, student.getName());
+			preparedStatement.setString(2, student.getEmail());
+			preparedStatement.setString(3, student.getMobile());
+			preparedStatement.setString(4, student.getAddress());
+			preparedStatement.setInt(5, student.getId());
+			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new SQLException("error while fetching students records.", e);
+			throw new SQLException("error while updating student!", e);
 		}
 	}
 
