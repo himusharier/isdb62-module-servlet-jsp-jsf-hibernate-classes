@@ -11,7 +11,7 @@ import himu.sms.database.DBConnection;
 
 public class StudentDAO {
 	private static final String INSERT_STUDENT_SQL = "INSERT INTO students_jsp (name, email, mobile, address) VALUES (?, ?, ?, ?)";
-	private static final String SELECT_ALL_STUDENTS_SQL = "SELECT * FROM students_jsp";
+	private static final String SELECT_ALL_STUDENTS_SQL = "SELECT * FROM students_jsp ORDER BY id ASC";
 	private static final String SELECT_STUDENT_BY_ID_SQL = "SELECT * FROM students_jsp WHERE id = ?";
 	private static final String UPDATE_STUDENT_SQL = "UPDATE students_jsp SET name = ?, email = ?, mobile = ?, address = ? WHERE id = ?";
 	private static final String DELETE_STUDENT_SQL = "DELETE FROM students_jsp WHERE id = ?";

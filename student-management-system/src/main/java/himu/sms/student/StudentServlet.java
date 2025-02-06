@@ -34,11 +34,10 @@ public class StudentServlet extends HttpServlet {
 
 			try {
 				studentDAO.addStudent(student);
-				String successMessage = "student record added successfully!";
+				String successMessage = "Student record added successfully!";
 				request.setAttribute("successMessage", successMessage);
-				// request.getRequestDispatcher("../pages/add_student.jsp").forward(request,
-				// response);
-				response.sendRedirect("list-students.jsp");
+				request.getRequestDispatcher("add-student.jsp").forward(request, response);
+				// response.sendRedirect("list-students.jsp");
 
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -88,4 +87,5 @@ public class StudentServlet extends HttpServlet {
 		}
 
 	}
+
 }
