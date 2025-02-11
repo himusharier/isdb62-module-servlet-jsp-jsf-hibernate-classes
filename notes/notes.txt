@@ -1,3 +1,6 @@
-user management system (youtube)
+user management system (youtube):
 	1. https://www.youtube.com/watch?v=-3m2_wHWXf4
+	
+login and register (youtube):
+	1. https://www.youtube.com/watch?v=zdWfyBXO2iU
 	
