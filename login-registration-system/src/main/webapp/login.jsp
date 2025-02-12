@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Sign Up Form by Colorlib</title>
-
 <!-- Font Icon -->
 <link rel="stylesheet"
 	href="fonts/material-icon/css/material-design-iconic-font.min.css">
-
 <!-- Main css -->
 <link rel="stylesheet" href="css/style.css">
+
+<script src="js/sweetalert.min.js"></script>
+<link rel="stylesheet" href="css/sweetalert2.min.css">
 </head>
 <body>
-
+<input type="hidden" id="status" value="<%= request.getAttribute("status") %>">
 	<div class="main">
 
 		<!-- Sing in  Form -->
@@ -28,10 +29,9 @@
 						<a href="registration.jsp" class="signup-image-link">Create an
 							account</a>
 					</div>
-
 					<div class="signin-form">
 						<h2 class="form-title">Sign in</h2>
-						<form method="" action="" class="register-form"
+						<form method="post" action="login" class="register-form"
 							id="login-form">
 							<div class="form-group">
 								<label for="username"><i
@@ -74,8 +74,15 @@
 	</div>
 
 	<!-- JS -->
-	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="js/jquery.min.js"></script>
 	<script src="js/main.js"></script>
+	
+	<script type="text/javascript">
+		var status = document.getElementById("status").value;
+		if(status == "failed") {
+			swal("Sorry", "Wrong Username or Password", "error");
+		}
+	</script>
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
