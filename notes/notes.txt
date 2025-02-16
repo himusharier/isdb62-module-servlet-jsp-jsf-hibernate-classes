@@ -4,4 +4,7 @@ user management system (youtube):
 login and register (youtube):
 	1. https://www.youtube.com/watch?v=zdWfyBXO2iU 
 		(video: 46:00)
+		
+website inspiration (design):
+	1. https://www.glassdoor.com/index.htm
 	
