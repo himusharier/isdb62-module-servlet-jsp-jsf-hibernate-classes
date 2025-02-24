@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html" xmlns:f="jakarta.faces.core">
+    <h:head>
+        <title>Product List</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        <div style="background-color: #e3f2fd;">
+		    <div class="container">
+		      <nav class="navbar navbar-expand-lg">
+		        <div class="container-fluid">
+		          <a class="navbar-brand" href="/project-jsf-crud2">&#123;Product Archive&#125;</a>
+		          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		            <span class="navbar-toggler-icon"></span>
+		          </button>
+		          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		              <li class="nav-item">
+		                <a class="nav-link active" href="/project-jsf-crud2">Add Product</a>
+		              </li>
+		              <li class="nav-item">
+		                <a class="nav-link active" href="product-list.xhtml">Product List</a>
+		              </li>
+		            </ul>
+		            <h:form styleClass="d-flex" role="search">
+					    <h:inputText styleClass="form-control me-2" placeholder="Search" aria-label="Search" />
+					    <h:commandButton styleClass="btn btn-outline-success" value="Search" action="#" />
+					</h:form>
+		          </div>
+		        </div>
+		      </nav>
+		    </div>
+		  </div>
+		  
+		  <h:form id="productForm">
+    <!-- Product Fields -->
+    <h:inputText value="#{productBean.product.name}" />
+    <h:inputText value="#{productBean.product.phone}" />
+    <h:inputText value="#{productBean.product.email}" />
+    <h:inputTextarea value="#{productBean.product.address}" />
+
+    <!-- Save Button -->
+    <h:commandButton value="Save" action="#{productBean.saveProduct}" />
+
+    <!-- Clear Button -->
+    <h:commandButton value="Clear" action="#{productBean.clearForm}" immediate="true" />
+
+    <!-- Product List -->
+    <h:dataTable value="#{productBean.productList}" var="product">
+        <h:column>
+            <f:facet name="header">Name</f:facet>
+            #{product.name}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Phone</f:facet>
+            #{product.phone}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Email</f:facet>
+            #{product.email}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Address</f:facet>
+            #{product.address}
+        </h:column>
+        <h:column>
+            <h:commandButton value="Edit" action="#{productBean.editProduct(product)}" />
+            <h:commandButton value="Delete" action="#{productBean.deleteProduct(product.id)}" />
+        </h:column>
+    </h:dataTable>
+</h:form>
+        
+        <!-- Bootstrap JS and Popper.js -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </h:body>
+
+</html>
