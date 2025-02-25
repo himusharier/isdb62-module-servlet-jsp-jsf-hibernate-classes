@@ -42,13 +42,13 @@
     <h:inputTextarea value="#{employeeBean.employee.address}" />
 
     <!-- Save Button -->
-    <h:commandButton value="Save" action="#{employeeBean.saveProduct}" />
+    <h:commandButton value="Save" action="#{employeeBean.saveEmployee}" />
 
     <!-- Clear Button -->
     <h:commandButton value="Clear" action="#{employeeBean.clearForm}" immediate="true" />
 
     <!-- Product List -->
-    <h:dataTable value="#{employeeBean.employee.List}" var="employee">
+    <h:dataTable value="#{employeeBean.employeeList}" var="employee">
         <h:column>
             <f:facet name="header">Name</f:facet>
             #{employee.name}
@@ -70,8 +70,8 @@
             #{employee.address}
         </h:column>
         <h:column>
-            <h:commandButton value="Edit" action="#{employeeBean.editProduct(employee)}" />
-            <h:commandButton value="Delete" action="#{employeeBean.deleteProduct(employee.id)}" />
+            <h:commandButton value="Edit" action="#{employeeBean.editEmployee(employee)}" />
+            <h:commandButton value="Delete" action="#{employeeBean.deleteEmployee(employee.id)}" />
         </h:column>
     </h:dataTable>
 </h:form>
