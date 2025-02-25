@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html" xmlns:f="jakarta.faces.core">
+    <h:head>
+        <title>Employee Management</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        <div style="background-color: #e3f2fd;">
+		    <div class="container">
+		      <nav class="navbar navbar-expand-lg">
+		        <div class="container-fluid">
+		          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		            <span class="navbar-toggler-icon"></span>
+		          </button>
+		          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		              <li class="nav-item">
+		                <a class="nav-link active" href="/project-employee-jsf">Add Employee</a>
+		              </li>
+		              <li class="nav-item">
+		                <a class="nav-link active" href="employee-list.xhtml">Employee List</a>
+		              </li>
+		            </ul>
+		            <h:form styleClass="d-flex" role="search">
+					    <h:inputText styleClass="form-control me-2" placeholder="Search" aria-label="Search" />
+					    <h:commandButton styleClass="btn btn-outline-success" value="Search" action="#" />
+					</h:form>
+		          </div>
+		        </div>
+		      </nav>
+		    </div>
+		  </div>
+		  
+		  <h:form id="productForm">
+    <!-- Product Fields -->
+    <h:inputText value="#{employeeBean.employee.name}" />
+    <h:inputText value="#{employeeBean.employee.phone}" />
+    <h:inputText value="#{employeeBean.employee.email}" />
+    <h:inputText value="#{employeeBean.employee.salary}" />
+    <h:inputTextarea value="#{employeeBean.employee.address}" />
+
+    <!-- Save Button -->
+    <h:commandButton value="Save" action="#{employeeBean.saveProduct}" />
+
+    <!-- Clear Button -->
+    <h:commandButton value="Clear" action="#{employeeBean.clearForm}" immediate="true" />
+
+    <!-- Product List -->
+    <h:dataTable value="#{employeeBean.employee.List}" var="employee">
+        <h:column>
+            <f:facet name="header">Name</f:facet>
+            #{employee.name}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Phone</f:facet>
+            #{employee.phone}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Email</f:facet>
+            #{employee.email}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Salary</f:facet>
+            #{employee.salary}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Address</f:facet>
+            #{employee.address}
+        </h:column>
+        <h:column>
+            <h:commandButton value="Edit" action="#{employeeBean.editProduct(employee)}" />
+            <h:commandButton value="Delete" action="#{employeeBean.deleteProduct(employee.id)}" />
+        </h:column>
+    </h:dataTable>
+</h:form>
+        
+        <!-- Bootstrap JS and Popper.js -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </h:body>
+
+</html>

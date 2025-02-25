@@ -8,3 +8,6 @@ login and register (youtube):
 website inspiration (design):
 	1. https://www.glassdoor.com/index.htm
 	
+git clients:
+	1. https://www.sublimemerge.com/
+	
